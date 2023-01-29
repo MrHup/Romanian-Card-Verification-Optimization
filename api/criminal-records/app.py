@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 @app.route('/search', methods=['GET'])
-def echo():
+def search():
     full_name = request.args.get('full-name')
     response = {'full-name': full_name,'status':'wip'}
     return jsonify(response)
