@@ -1,11 +1,27 @@
 from flask import Flask, jsonify, request, render_template
-
+import sqlite3
 app = Flask(__name__)
+
+def connect_db():
+    conn = sqlite3.connect("searches.db")
+    c = conn.cursor()
+    c.execute("""CREATE TABLE IF NOT EXISTS searches
+                 (id INTEGER PRIMARY KEY, full_name TEXT, timestamp TEXT)
+              """)
+    conn.commit()
+    return conn, c
+
 
 @app.route('/search', methods=['GET'])
 def search():
     full_name = request.args.get('full-name')
     response = {'full-name': full_name,'status':'wip'}
+    conn, c = connect_db()
+    c.execute("""INSERT INTO searches (full_name, timestamp) 
+                 VALUES (?, datetime('now'))
+              """, (full_name,))
+    conn.commit()
+    conn.close()
     return jsonify(response)
 
 @app.route('/admin', methods=['GET', 'POST'])

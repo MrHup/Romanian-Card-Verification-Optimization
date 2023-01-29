@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Admin Panel</title>
+  </head>
+  <body>
+    <h1>Admin Panel</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for request in requests %}
+        <tr>
+          <td>{{ request[0] }}</td>
+          <td>{{ request[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
