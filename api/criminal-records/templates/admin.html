@@ -1,12 +1,45 @@
-<table>
-  <tr>
-    <th>Full Name</th>
-    <th>Time</th>
-  </tr>
-  {% for result in searches%}
-  <tr>
-    <td>{{ result[1] }}</td>
-    <td>{{ result[2] }}</td>
-  </tr>
-  {% endfor %}
-</table>
+<html>
+<head>
+    <style>
+        .title {
+            background-color: #dd5b2c;
+            width: 100%;
+            text-align: left;
+            font-size: 36px;
+            color: white;
+            padding: 20px;
+        }
+        table {
+          width: 50%;
+          margin: 2px 0 0 2px;
+          text-align: left;
+          border-collapse: collapse;
+          }
+          th, td {
+          padding: 10px;
+          text-align: left;
+          border: 1px solid black;
+          }
+          th {
+          background-color: #ddd;
+          }
+
+
+    </style>
+</head>
+<body>
+    <div class="title">Admin Panel</div>
+    <table>
+        <tr>
+            <th>Full Name</th>
+            <th>Time</th>
+        </tr>
+        {% for result in searches %}
+        <tr>
+            <td>{{ result[1] }}</td>
+            <td>{{ result[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
