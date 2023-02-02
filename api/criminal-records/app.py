@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, session
 import sqlite3
 app = Flask(__name__)
+app.secret_key = 'secret-key'
 
 def connect_db():
     conn = sqlite3.connect("searches.db")
@@ -26,17 +27,22 @@ def search():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    if request.method == 'GET':
+    if 'logged_in' in session:
+        print("logged in already")
         conn, c = connect_db()
         c.execute("""SELECT * FROM searches""")
-        results = c.fetchall()
+        searches = c.fetchall()
+        print(searches)
         conn.close()
-        return render_template('admin.html', results=results)
+        return render_template('admin.html', searches=searches)
+    if request.method == 'GET':
+        return render_template('admin_login.html')
     elif request.method == 'POST':
-        pin_id = request.form['pin-id']
-        pin_key = request.form['pin-key']
+        pin_id = request.form['pin_id']
+        pin_key = request.form['pin_key']
         if pin_id == 'RICVR-23-T' and pin_key == 'T2Y433wrg3ad':
-            return 'Access granted'
+            session['logged_in'] = True
+            return render_template('admin.html')
         else:
             return 'Access denied'
 
