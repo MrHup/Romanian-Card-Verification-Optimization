@@ -27,7 +27,11 @@ def search():
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     if request.method == 'GET':
-        return render_template('admin.html')
+        conn, c = connect_db()
+        c.execute("""SELECT * FROM searches""")
+        results = c.fetchall()
+        conn.close()
+        return render_template('admin.html', results=results)
     elif request.method == 'POST':
         pin_id = request.form['pin-id']
         pin_key = request.form['pin-key']
@@ -35,6 +39,7 @@ def admin():
             return 'Access granted'
         else:
             return 'Access denied'
+
 
 if __name__ == '__main__':
     app.run()
