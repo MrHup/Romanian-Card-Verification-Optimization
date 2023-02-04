@@ -35,7 +35,7 @@
 <body>
     <div class="title">Admin Panel</div>
     <div class="sub-title">Name Screening logs</div>
-    <div class="sub-title">API Hits / Misses</div>
+    <div class="sub-title">All Searches</div>
     <table>
         <tr>
             <th>Full Name</th>
@@ -48,10 +48,30 @@
         </tr>
         {% endfor %}
     </table>
+    <div class="sub-title">Screening Hits</div>
+    <table>
+      <tr>
+          <th>Searched Name</th>
+          <th>Found Person Name</th>
+          <th>Found Person DOB</th>
+          <th>Alert Index</th>
+          <th>Hit Date Time</th>
+      </tr>
+      {% for result in screening_hits %}
+      <tr>
+          <td>{{ result[1] }}</td>
+          <td>{{ result[2] }}</td>
+          <td>{{ result[3] }}</td>
+          <td>{{ result[4] }}</td>
+          <td>{{ result[5] }}</td>
+      </tr>
+      {% endfor %}
+  </table> 
+
     <div class="sub-title">Romanian Law Enforcement Dataset</div>
     <form action="{{ url_for('update_records') }}" method="get">
       <input type="submit" value="Update dataset">
-  </form>
+    </form>
   <table>
     <tr>
         <th>Full Name</th>
