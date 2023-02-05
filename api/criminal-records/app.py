@@ -118,35 +118,44 @@ def admin():
             return 'Access denied'
 @app.route('/update_records', methods=['GET'])
 def update_records():
-    url = "https://www.politiaromana.ro/ro/persoane-urmarite"
-    response = requests.get(url,verify=False)
-    soup = BeautifulSoup(response.content, "html.parser")
-
-    names = soup.find_all("h3", class_="descNume")
-    names_list = []
-    for name in names:
-        print(name.text)
-        names_list.append(name.text)
-
-    dates_of_birth = soup.find_all("span", class_="descData")
-    dob_list = []
-    for dob in dates_of_birth:
-        print(dob.text)
-        dob_list.append(dob.text)
-
-    conn = sqlite3.connect("screening.db")
-    c = conn.cursor()
-
-    c.execute("DROP TABLE IF EXISTS ro_wanted_persons")
-    c.execute(
-        "CREATE TABLE IF NOT EXISTS ro_wanted_persons (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, DOB TEXT, extracted_date TIMESTAMP)")
+    start = 1
+    max = 250
     now = datetime.now()
-    for i in range(len(names_list)):
-        c.execute("INSERT INTO ro_wanted_persons (Name, DOB, extracted_date) VALUES (?, ?, ?)",
-                  (names_list[i], dob_list[i], now))
-    conn.commit()
-    conn.close()
-    return "Records updated"
+    url = f"https://www.politiaromana.ro/ro/persoane-urmarite&page={start}"
+   
+    while start<=max:
+        response = requests.get(url,verify=False)
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        names = soup.find_all("h3", class_="descNume")
+        names_list = []
+        for name in names:
+            print(name.text)
+            names_list.append(name.text)
+
+        dates_of_birth = soup.find_all("span", class_="descData")
+        dob_list = []
+        for dob in dates_of_birth:
+            print(dob.text)
+            dob_list.append(dob.text)
+
+        conn = sqlite3.connect("screening.db")
+        c = conn.cursor()
+
+        if start == 1:
+            c.execute("DROP TABLE IF EXISTS ro_wanted_persons")
+        c.execute(
+            "CREATE TABLE IF NOT EXISTS ro_wanted_persons (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, DOB TEXT, extracted_date TIMESTAMP)")
+        
+        for i in range(len(names_list)):
+            c.execute("INSERT INTO ro_wanted_persons (Name, DOB, extracted_date) VALUES (?, ?, ?)",
+                    (names_list[i], dob_list[i], now))
+        conn.commit()
+        conn.close()
+        start+=1
+        url = f"https://www.politiaromana.ro/ro/persoane-urmarite&page={start}"
+        print(f"page {start}/{max}")
+    return f"Records updated. Data fetched from {max} pages"
 
 if __name__ == '__main__':
     app.run()
