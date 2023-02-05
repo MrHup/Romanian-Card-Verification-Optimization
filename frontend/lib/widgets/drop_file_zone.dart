@@ -1,6 +1,8 @@
 import 'package:frontend/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:convert';
 
 class DropFileZone extends StatefulWidget {
   const DropFileZone({super.key});
@@ -11,6 +13,7 @@ class DropFileZone extends StatefulWidget {
 
 class _DropFileZoneState extends State<DropFileZone> {
   late DropzoneViewController controller1;
+  final ImagePicker _picker = ImagePicker();
   bool highlighted1 = false;
 
   @override
@@ -29,9 +32,12 @@ class _DropFileZoneState extends State<DropFileZone> {
                   ),
                 ),
                 onPressed: () async {
-                  print("Pressed button");
-                  print(await controller1
-                      .pickFiles(mime: ['image/jpeg', 'image/png']));
+                  var res =
+                      await _picker.pickImage(source: ImageSource.gallery);
+                  final bytes = await res!.readAsBytes();
+                  String base64Image =
+                      "data:image/png;base64," + base64Encode(bytes);
+                  print("img_pan : $base64Image");
                 },
                 child: const Padding(
                   padding:
@@ -117,11 +123,13 @@ class _DropFileZoneState extends State<DropFileZone> {
           },
           onDrop: (ev) async {
             print('Zone 1 drop: ${ev.name}');
+            print('Zone 1 drop: ${ev.size}');
             setState(() {
               highlighted1 = false;
             });
             final bytes = await controller1.getFileData(ev);
-            print(bytes.sublist(0, 20));
+            String base64Image = "data:image/png;base64," + base64Encode(bytes);
+            print("img_pan : $base64Image");
           },
           onDropMultiple: (ev) async {
             print('Zone 1 drop multiple: $ev');
