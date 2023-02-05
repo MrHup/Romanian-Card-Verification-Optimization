@@ -56,7 +56,7 @@ def search():
     conn,c = connect_screening_hits_db()
     for result in scr:
         if result[1]==full_name:
-            response = {'full-name': full_name, 'found_person_name':result[1],'found_person_dob':result[2],'alert_index': 1}
+            response = {'full-name': full_name, 'found_person_name':result[1],'found_person_dob':result[2],'alert_index': 1,'source':'https://www.politiaromana.ro/ro/persoane-urmarite','source_link':f'https://www.politiaromana.ro/ro/persoane-urmarite/{result[1].replace(" " ,"-")}'}
             c.execute("""INSERT INTO screening_hits (API_name, found_person_name, found_person_dob,alert_index,hit_date) 
                  VALUES (?, ?,?,?,datetime('now'))
               """, (full_name,result[1],result[2],1))
@@ -72,7 +72,7 @@ def search():
 
             match = difflib.get_close_matches(full_name, n_list)
             if match:
-                response = {'full-name': full_name, 'found_person_name':result[1],'found_person_dob':result[2],'alert_index': 0.5}
+                response = {'full-name': full_name, 'found_person_name':result[1],'found_person_dob':result[2],'alert_index': 0.5,'source':'https://www.politiaromana.ro/ro/persoane-urmarite','source_link':f'https://www.politiaromana.ro/ro/persoane-urmarite/{result[1].replace(" " ,"-")}'}
                 c.execute("""INSERT INTO screening_hits (API_name, found_person_name, found_person_dob,alert_index,hit_date) 
                     VALUES (?, ?,?,?,datetime('now'))
                 """, (full_name,result[1],result[2],0.5))
