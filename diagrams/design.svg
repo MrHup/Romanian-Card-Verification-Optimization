@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="design.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="3.0431538"
+     inkscape:cx="562.40997"
+     inkscape:cy="129.14234"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1072"
+     inkscape:window-y="428"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid9" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow3"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow3"
+       markerWidth="4.2071066"
+       markerHeight="7"
+       viewBox="0 0 4.2071068 7"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:round"
+         d="M 3,-3 0,0 3,3"
+         id="arrow3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc" />
+    </marker>
+    <rect
+       x="89.226186"
+       y="207.265"
+       width="204.47668"
+       height="18.588789"
+       id="rect494" />
+    <marker
+       style="overflow:visible"
+       id="Arrow3-9"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow3"
+       markerWidth="4.2071066"
+       markerHeight="7"
+       viewBox="0 0 4.2071068 7"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:round"
+         d="M 3,-3 0,0 3,3"
+         id="arrow3-8"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#f9f9f9;stroke-width:0.389609;stroke:#000000;stroke-opacity:1"
+       id="rect113"
+       width="77.862579"
+       height="43.063267"
+       x="9.2012825"
+       y="6.1882372" />
+    <rect
+       style="fill:#666666;stroke-width:0.301579"
+       id="rect275"
+       width="24.692039"
+       height="21.735949"
+       x="53.625782"
+       y="15.99766" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text492"
+       style="white-space:pre;shape-inside:url(#rect494);display:inline;fill:#666666" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#666666;stroke-width:0.264583"
+       x="31.722931"
+       y="53.855206"
+       id="text500"><tspan
+         sodipodi:role="line"
+         id="tspan498"
+         style="fill:#000000;stroke-width:0.264583"
+         x="31.722931"
+         y="53.855206" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#ffffff;stroke-width:0.264583"
+       x="41.290627"
+       y="53.746185"
+       id="text608"><tspan
+         sodipodi:role="line"
+         id="tspan606"
+         style="stroke-width:0.264583;fill:#ffffff"
+         x="41.290627"
+         y="53.746185">Frontend</tspan></text>
+    <g
+       id="g3119"
+       transform="translate(8.0717342,0.18443564)">
+      <rect
+         style="fill:#3771c8;stroke-width:0.207377"
+         id="rect275-2"
+         width="18.953749"
+         height="13.389344"
+         x="96.681503"
+         y="19.91013" />
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;fill:#000000;stroke-width:0.264583"
+         x="106.53264"
+         y="26.569685"
+         id="text608-8"><tspan
+           sodipodi:role="line"
+           id="tspan606-5"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="106.53264"
+           y="26.569685">Morpheus</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="106.53264"
+           y="30.538435"
+           id="tspan1581">OCR</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;fill:#000000;stroke-width:0.264583"
+         x="126.25346"
+         y="25.270313"
+         id="text608-8-2"><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="126.25346"
+           y="25.270313"
+           id="tspan1581-8">OSINT email</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#fefefe;stroke-width:0.18988;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow3)"
+       d="M 86.596018,26.430913 H 104.62985"
+       id="path2444" />
+    <path
+       style="fill:none;stroke:#fefefe;stroke-width:0.209281;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow3-9)"
+       d="m 123.75076,26.139188 h 21.90727"
+       id="path2444-0" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264999;stroke-dasharray:none;stroke-opacity:1"
+       x="167.42113"
+       y="23.928263"
+       id="text4136"><tspan
+         sodipodi:role="line"
+         id="tspan4134"
+         style="stroke:none;stroke-width:0.265"
+         x="167.42113"
+         y="23.928263">Generate email variations</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264999;stroke-dasharray:none;stroke-opacity:1"
+       x="159.34393"
+       y="27.7869"
+       id="text4136-9"><tspan
+         sodipodi:role="line"
+         id="tspan4134-8"
+         style="stroke:none;stroke-width:0.265"
+         x="159.34393"
+         y="27.7869">Look for spoofs</tspan></text>
+  </g>
+</svg>
