@@ -9,30 +9,33 @@
             color: white;
             padding: 20px;
         }
+        .sub-title {
+            font-size: 24px;
+            color: black;
+            padding: 20px;
+        }
         table {
           width: 50%;
           margin: 2px 0 0 2px;
           text-align: left;
           border-collapse: collapse;
-        }
-        th, td {
+          }
+          th, td {
           padding: 10px;
           text-align: left;
           border: 1px solid black;
-        }
-        th {
+          }
+          th {
           background-color: #ddd;
-        }
-        .sub-title {
-            font-size: 24px;
-            padding: 10px;
-        }
+          }
+
+
     </style>
 </head>
 <body>
     <div class="title">Admin Panel</div>
     <div class="sub-title">Name Screening logs</div>
-    <div class="sub-title">API Hits / misses</div>
+    <div class="sub-title">All Searches</div>
     <table>
         <tr>
             <th>Full Name</th>
@@ -45,5 +48,43 @@
         </tr>
         {% endfor %}
     </table>
+    <div class="sub-title">Screening Hits</div>
+    <table>
+      <tr>
+          <th>Searched Name</th>
+          <th>Found Person Name</th>
+          <th>Found Person DOB</th>
+          <th>Alert Index</th>
+          <th>Hit Date Time</th>
+      </tr>
+      {% for result in screening_hits %}
+      <tr>
+          <td>{{ result[1] }}</td>
+          <td>{{ result[2] }}</td>
+          <td>{{ result[3] }}</td>
+          <td>{{ result[4] }}</td>
+          <td>{{ result[5] }}</td>
+      </tr>
+      {% endfor %}
+  </table> 
+
+    <div class="sub-title">Romanian Law Enforcement Dataset</div>
+    <form action="{{ url_for('update_records') }}" method="get">
+      <input type="submit" value="Update dataset">
+    </form>
+  <table>
+    <tr>
+        <th>Full Name</th>
+        <th>Date of birth</th>
+        <th>Extraction Date</th>
+    </tr>
+    {% for result in scr %}
+    <tr>
+        <td>{{ result[1] }}</td>
+        <td>{{ result[2] }}</td>
+        <td>{{ result[3] }}</td>
+    </tr>
+    {% endfor %}
+</table> 
 </body>
 </html>
