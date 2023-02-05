@@ -1,4 +1,4 @@
-import 'package:cititor_ai/theme/text_styles.dart';
+import 'package:frontend/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 
