@@ -1,4 +1,4 @@
-def ID_check(CNP,sex,seria):
+def ID_check(CNP,sex):
     if CNP.isdigit()==0:
         print('1')
         return False
