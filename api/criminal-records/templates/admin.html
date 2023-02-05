@@ -32,9 +32,10 @@
 <body>
     <div class="title">Admin Panel</div>
     <div class="sub-title">Name Screening logs</div>
+    <div class="container-xxl mt-3 border">
     <div class="sub-title">All Searches</div>
     <div class="table-responsive">
-    <table class="table">
+            <table class="table">
         <tr>
             <th>Full Name</th>
             <th>Time</th>
@@ -45,7 +46,8 @@
             <td>{{ result[2] }}</td>
         </tr>
         {% endfor %}
-    </table>
+            </table>
+        </div>
     </div>
     <div class="sub-title">Screening Hits</div>
     <div class="table-responsive">
