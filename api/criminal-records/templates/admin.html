@@ -33,6 +33,7 @@
     <div class="title">Admin Panel</div>
     <div class="sub-title">Name Screening logs</div>
     <div class="sub-title">All Searches</div>
+    <div class="table-responsive">
     <table class="table">
         <tr>
             <th>Full Name</th>
@@ -45,7 +46,9 @@
         </tr>
         {% endfor %}
     </table>
+    </div>
     <div class="sub-title">Screening Hits</div>
+    <div class="table-responsive">
     <table class="table">
       <tr>
           <th>Searched Name</th>
@@ -71,11 +74,12 @@
       </tr>
       {% endfor %}
   </table> 
-
+</div>
     <div class="sub-title">Romanian Law Enforcement Dataset</div>
     <form action="{{ url_for('update_records') }}" method="get">
       <input type="submit" value="Update dataset">
     </form>
+    <div class="table-responsive">
   <table class="table">
     <tr>
         <th>Full Name</th>
@@ -90,5 +94,6 @@
     </tr>
     {% endfor %}
 </table> 
+</div>
 </body>
 </html>
