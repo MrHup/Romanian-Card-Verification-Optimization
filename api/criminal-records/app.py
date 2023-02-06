@@ -33,10 +33,53 @@ def connect_screening_hits_db():
     conn.commit()
     return conn, c
 
+
+@app.route('/api/compute_cn',methods=['GET'])
+def compute_cn():
+    cnp=request.args.get('cnp')
+    fnc='279146358279'
+    sc = 0 
+    for i in range(12):
+        sc = sc + int(cnp[i]) * int(fnc[i])
+    if sc % 11 < 10:
+        return sc % 11
+    elif sc % 11 == 10:
+        return 1
+
+@app.route('/api/validation',methods=['GET'])
+def validation():
+    cnp = request.args.get('cnp')
+    if cnp.isdigit()==0:
+        return {"success":False, "reason":"The CNP is not numeric."}
+    if len(cnp)!=13:
+        return {"success":False, "reason":"The CNP does not have an acceptable size."}
+    if int(cnp[0]) < 1 or int(cnp[0]) > 8:
+        return {"success":False, "reason":"Sex digit not valid."}
+    if int(cnp[3:5]) < 1 or int(cnp[3:5]) > 12:
+        return {"success":False, "reason":"Birth month digits not valid."}
+    if int(cnp[5:7]) < 1 or int(cnp[5:7]) > 31:
+        return {"success":False, "reason":"Birth day not valid."}
+    if int(cnp[7:9]) < 1 or int(cnp[7:9]) > 52:
+        return {"success":False, "reason":"County code not valid."}
+    if int(cnp[9:12]) == 0:
+        return {"success":False, "reason":"Sequential number not valid."}
+    if compute_cn(cnp) != int(cnp[12]):
+        return {"success":False, "reason":"Control number not valid."}
+    return True
+
+
+
 @app.route('/api/search', methods=['GET'])
 def search():
     full_name = request.args.get('full-name')
-
+    try:
+        api_key = requests.args.get('api-key')
+    except:
+        return "API key error"
+    if len(api_key)==0:
+        return "API key error"
+    if api_key!="T2Y433wrg3ad":
+        return "API key error"
     # read from db names list
     # if full match, save in searches_hits_misses, alert_index = 1
     # if partial match, save in searches_hits_misses, alert_index = 0.5
