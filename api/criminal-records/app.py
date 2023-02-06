@@ -33,7 +33,7 @@ def connect_screening_hits_db():
     conn.commit()
     return conn, c
 
-@app.route('/search', methods=['GET'])
+@app.route('/api/search', methods=['GET'])
 def search():
     full_name = request.args.get('full-name')
 
