@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:frontend/common/static.dart';
 import 'package:frontend/theme/text_styles.dart';
+import 'dart:convert';
+
+import 'package:frontend/widgets/image_b64.dart';
 
 class AnalyserScreen extends StatelessWidget {
   const AnalyserScreen({super.key});
@@ -22,8 +24,9 @@ class AnalyserScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: Image(image: AssetImage('assets/images/logo.png')),
                     ),
-                    const Text("Analyser Screen",
+                    const Text("Addons and Stuff",
                         style: TextStyles.subtitleDescriptionHighlight),
+                    ImageFromB64(GlobalStatic.b64Img)
                   ],
                 ),
               ),

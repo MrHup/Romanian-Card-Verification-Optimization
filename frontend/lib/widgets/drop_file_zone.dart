@@ -37,7 +37,7 @@ class _DropFileZoneState extends State<DropFileZone> {
                       await _picker.pickImage(source: ImageSource.gallery);
                   final bytes = await res!.readAsBytes();
                   String base64Image =
-                      "data:image/png;base64," + base64Encode(bytes);
+                      base64Encode(bytes); // "data:image/png;base64," +
 
                   startProcessFlow(context, base64Image);
                 },
@@ -130,7 +130,8 @@ class _DropFileZoneState extends State<DropFileZone> {
               highlighted1 = false;
             });
             final bytes = await controller1.getFileData(ev);
-            String base64Image = "data:image/png;base64," + base64Encode(bytes);
+            String base64Image =
+                base64Encode(bytes); // "data:image/png;base64," +
 
             startProcessFlow(context, base64Image);
           },
