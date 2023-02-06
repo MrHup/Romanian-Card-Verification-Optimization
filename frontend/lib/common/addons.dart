@@ -15,7 +15,7 @@ void startProcessFlow(BuildContext context, String base64Image) {
   // getIdDetails();
 }
 
-void getIdDetails() async {
+Future<IDData> getIdDetails() async {
   String url = "http://localhost:80/ocr";
   Map<String, String> headers = {"Content-type": "application/json"};
   // make a POST request with following body: photo, session_id and time_spent
@@ -34,7 +34,15 @@ void getIdDetails() async {
     final res = IDData.fromJson(list[0]);
     GlobalStatic.idData = res;
     print(res.toString());
+    return res;
   } else {
     print('Failed to load data');
+    return IDData(
+        firstName: "",
+        lastName: "",
+        address: "",
+        birthDate: "",
+        cnp: "",
+        idType: "");
   }
 }
