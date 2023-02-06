@@ -13,9 +13,12 @@ class ImageFromB64 extends StatelessWidget {
 
     Uint8List bytes = const Base64Decoder().convert(b64Img);
 
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Image.memory(bytes),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.5,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Image.memory(bytes),
+      ),
     );
   }
 }

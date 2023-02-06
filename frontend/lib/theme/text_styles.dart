@@ -24,7 +24,7 @@ class TextStyles {
   );
 
   static const TextStyle subtitleDescription = TextStyle(
-    fontSize: 18,
+    fontSize: 26,
     fontFamily: 'Arial',
     fontWeight: FontWeight.bold,
     color: Color(0xff3f3f3f),
@@ -60,7 +60,7 @@ class TextStyles {
   );
 
   static const TextStyle smallNoteText = TextStyle(
-    fontSize: 11,
+    fontSize: 14,
     fontFamily: 'Arial',
     fontWeight: FontWeight.normal,
     color: Color(0xff3f3f3f),

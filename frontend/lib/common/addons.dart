@@ -10,13 +10,9 @@ void startProcessFlow(BuildContext context, String base64Image) {
   GlobalStatic.b64Img = base64Image;
 
   // navigate to the analyser screen
-  Navigator.pushNamedAndRemoveUntil(
-    context,
-    "/analyser",
-    (route) => false,
-  );
+  Navigator.pushNamed(context, "/analyser");
 
-  getIdDetails();
+  // getIdDetails();
 }
 
 void getIdDetails() async {
@@ -24,6 +20,7 @@ void getIdDetails() async {
   Map<String, String> headers = {"Content-type": "application/json"};
   // make a POST request with following body: photo, session_id and time_spent
   print("Sending request to $url");
+
   final response = await http.post(Uri.parse(url),
       headers: headers,
       body: jsonEncode({
