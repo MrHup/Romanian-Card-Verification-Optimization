@@ -30,4 +30,4 @@ async def validation(cnp):
         return {"success":False, "reason":"Sequential number not valid."}
     if compute_cn(cnp) != int(cnp[12]):
         return {"success":False, "reason":"Control number not valid."}
-    return True
+    return {"success":True, "reason":"All good."}
