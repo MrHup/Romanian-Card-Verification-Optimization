@@ -73,7 +73,7 @@ def validation():
 def search():
     full_name = request.args.get('full-name')
     try:
-        api_key = requests.args.get('api-key')
+        api_key = request.args.get('api-key')
     except:
         return "API key error"
     if len(api_key)==0:
