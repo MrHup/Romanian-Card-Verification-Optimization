@@ -1,4 +1,5 @@
 import 'package:frontend/theme/text_styles.dart';
+import 'package:frontend/common/addons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:image_picker/image_picker.dart';
@@ -37,7 +38,8 @@ class _DropFileZoneState extends State<DropFileZone> {
                   final bytes = await res!.readAsBytes();
                   String base64Image =
                       "data:image/png;base64," + base64Encode(bytes);
-                  print("img_pan : $base64Image");
+
+                  startProcessFlow(base64Image);
                 },
                 child: const Padding(
                   padding:
@@ -129,7 +131,8 @@ class _DropFileZoneState extends State<DropFileZone> {
             });
             final bytes = await controller1.getFileData(ev);
             String base64Image = "data:image/png;base64," + base64Encode(bytes);
-            print("img_pan : $base64Image");
+
+            startProcessFlow(base64Image);
           },
           onDropMultiple: (ev) async {
             print('Zone 1 drop multiple: $ev');
