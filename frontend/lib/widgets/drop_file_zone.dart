@@ -39,7 +39,7 @@ class _DropFileZoneState extends State<DropFileZone> {
                   String base64Image =
                       "data:image/png;base64," + base64Encode(bytes);
 
-                  startProcessFlow(base64Image);
+                  startProcessFlow(context, base64Image);
                 },
                 child: const Padding(
                   padding:
@@ -132,7 +132,7 @@ class _DropFileZoneState extends State<DropFileZone> {
             final bytes = await controller1.getFileData(ev);
             String base64Image = "data:image/png;base64," + base64Encode(bytes);
 
-            startProcessFlow(base64Image);
+            startProcessFlow(context, base64Image);
           },
           onDropMultiple: (ev) async {
             print('Zone 1 drop multiple: $ev');
