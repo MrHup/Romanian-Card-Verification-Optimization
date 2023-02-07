@@ -1,3 +1,4 @@
+import 'package:frontend/common/cr_data.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -10,9 +11,8 @@ void startProcessFlow(BuildContext context, String base64Image) {
   GlobalStatic.b64Img = base64Image;
 
   // navigate to the analyser screen
-  Navigator.pushNamed(context, "/analyser");
-
-  // getIdDetails();
+  getCRDetails("Mihai Popescu");
+  // Navigator.pushNamed(context, "/analyser");
 }
 
 Future<IDData> getIdDetails() async {
@@ -44,5 +44,22 @@ Future<IDData> getIdDetails() async {
         birthDate: "",
         cnp: "",
         idType: "");
+  }
+}
+
+void getCRDetails(String name) async {
+  String url =
+      "https://b3d4-2a02-2f09-3919-9d00-acee-a03d-411b-8a20.eu.ngrok.io/api/search?full-name=${name}&api-key=T2Y433wrg3ad";
+  print("Sending request to $url");
+
+  final response = await http.get(Uri.parse(url));
+
+  if (response.statusCode == 200) {
+    final list = jsonDecode(response.body);
+    final res = CRData.fromJson(list[0]);
+    GlobalStatic.crData = res;
+    print(res.toString());
+  } else {
+    print('Failed to load data');
   }
 }

@@ -48,30 +48,27 @@ class _AnalyserScreenState extends State<AnalyserScreen> {
                         style: TextStyles.subtitleDescriptionHighlight),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Container(
-                        child: Card(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              ImageFromB64(GlobalStatic.b64Img),
-                              Expanded(
-                                //IDDataCard(),
-                                child: FutureBuilder<IDData>(
-                                    future: _data,
-                                    builder: (BuildContext context,
-                                        AsyncSnapshot<IDData> snapshot) {
-                                      if (snapshot.hasData) {
-                                        return IDDataCard(snapshot.data!);
-                                      } else if (snapshot.hasError) {
-                                        return Text("${snapshot.error}");
-                                      }
-                                      return const Center(
-                                          child: CircularProgressIndicator());
-                                    }),
-                              )
-                            ],
-                          ),
+                      child: Card(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ImageFromB64(GlobalStatic.b64Img),
+                            Expanded(
+                              child: FutureBuilder<IDData>(
+                                  future: _data,
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot<IDData> snapshot) {
+                                    if (snapshot.hasData) {
+                                      return IDDataCard(snapshot.data!);
+                                    } else if (snapshot.hasError) {
+                                      return Text("${snapshot.error}");
+                                    }
+                                    return const Center(
+                                        child: CircularProgressIndicator());
+                                  }),
+                            )
+                          ],
                         ),
                       ),
                     )
