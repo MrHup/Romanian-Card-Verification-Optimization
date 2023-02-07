@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/common/addons.dart';
+import 'package:frontend/common/cr_data.dart';
 import 'package:frontend/common/id_data.dart';
 import 'package:frontend/common/static.dart';
 import 'package:frontend/theme/text_styles.dart';
+import 'package:frontend/widgets/cr_data_card.dart';
 import 'package:frontend/widgets/id_data_card.dart';
+import 'package:frontend/widgets/id_verif_data_card.dart';
 import 'dart:convert';
 
 import 'package:frontend/widgets/image_b64.dart';
@@ -17,6 +20,9 @@ class AnalyserScreen extends StatefulWidget {
 
 class _AnalyserScreenState extends State<AnalyserScreen> {
   Future<IDData> _data = getIdDetails();
+  Future<CRData> _crData = getCRDetails();
+  Future<String> _idreason = getIDAnalysis();
+  List<Widget> _addons = [];
   @override
   void initState() {
     super.initState();
@@ -60,7 +66,105 @@ class _AnalyserScreenState extends State<AnalyserScreen> {
                                   builder: (BuildContext context,
                                       AsyncSnapshot<IDData> snapshot) {
                                     if (snapshot.hasData) {
-                                      return IDDataCard(snapshot.data!);
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          IDDataCard(snapshot.data!),
+                                          TextButton(
+                                            style: ButtonStyle(
+                                              foregroundColor:
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.blue),
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                final name =
+                                                    "${GlobalStatic.idData.firstName} ${GlobalStatic.idData.lastName}"
+                                                        .toUpperCase();
+                                                _crData =
+                                                    getCRDetails(name: name);
+                                                _addons.add(Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: FutureBuilder<
+                                                              CRData>(
+                                                          future: _crData,
+                                                          builder: (BuildContext
+                                                                  context,
+                                                              AsyncSnapshot<
+                                                                      CRData>
+                                                                  snapshot) {
+                                                            if (snapshot
+                                                                .hasData) {
+                                                              return CRDataCard(
+                                                                  snapshot
+                                                                      .data!);
+                                                            } else if (snapshot
+                                                                .hasError) {
+                                                              return Text(
+                                                                  "${snapshot.error}");
+                                                            }
+                                                            return const CircularProgressIndicator();
+                                                          }),
+                                                    ),
+                                                  ],
+                                                ));
+                                              });
+                                            },
+                                            child:
+                                                Text('Check Criminal Record'),
+                                          ),
+                                          TextButton(
+                                            style: ButtonStyle(
+                                              foregroundColor:
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.blue),
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                final name =
+                                                    "${GlobalStatic.idData.firstName} ${GlobalStatic.idData.lastName}"
+                                                        .toUpperCase();
+                                                _idreason = getIDAnalysis(
+                                                    cnp: GlobalStatic
+                                                        .idData.cnp);
+                                                _addons.add(Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: FutureBuilder<
+                                                              String>(
+                                                          future: _idreason,
+                                                          builder: (BuildContext
+                                                                  context,
+                                                              AsyncSnapshot<
+                                                                      String>
+                                                                  snapshot) {
+                                                            if (snapshot
+                                                                .hasData) {
+                                                              return IDVerifDataCard(
+                                                                  snapshot
+                                                                      .data!);
+                                                            } else if (snapshot
+                                                                .hasError) {
+                                                              return Text(
+                                                                  "${snapshot.error}");
+                                                            }
+                                                            return const CircularProgressIndicator();
+                                                          }),
+                                                    ),
+                                                  ],
+                                                ));
+                                              });
+                                            },
+                                            child: Text(
+                                                'Check ID format validity'),
+                                          )
+                                        ],
+                                      );
                                     } else if (snapshot.hasError) {
                                       return Text("${snapshot.error}");
                                     }
@@ -75,6 +179,7 @@ class _AnalyserScreenState extends State<AnalyserScreen> {
                   ],
                 ),
               ),
+              ..._addons,
             ],
           ),
         ));

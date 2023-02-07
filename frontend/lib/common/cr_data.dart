@@ -1,5 +1,5 @@
 class CRData {
-  final String alert_index;
+  final double alert_index;
   final String found_person_dob;
   final String found_person_name;
   final String full_name;

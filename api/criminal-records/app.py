@@ -35,6 +35,15 @@ def connect_screening_hits_db():
     conn.commit()
     return conn, c
 
+def compute_control_nr(cnp):
+    fnc='279146358279'
+    sc = 0 
+    for i in range(12):
+        sc = sc + int(cnp[i]) * int(fnc[i])
+    if sc % 11 < 10:
+        return sc % 11
+    elif sc % 11 == 10:
+        return 1
 
 @app.route('/api/compute_cn',methods=['GET'])
 def compute_cn():
@@ -65,9 +74,9 @@ def validation():
         return {"success":False, "reason":"County code not valid."}
     if int(cnp[9:12]) == 0:
         return {"success":False, "reason":"Sequential number not valid."}
-    if compute_cn(cnp) != int(cnp[12]):
+    if compute_control_nr(cnp) != int(cnp[12]):
         return {"success":False, "reason":"Control number not valid."}
-    return True
+    return {"success":True, "reason":"All good."}
 
 
 

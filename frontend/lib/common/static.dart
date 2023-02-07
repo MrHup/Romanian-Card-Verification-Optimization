@@ -11,7 +11,7 @@ class GlobalStatic {
       cnp: "",
       idType: "");
   static CRData crData = CRData(
-      alert_index: "",
+      alert_index: 0,
       found_person_dob: "",
       found_person_name: "",
       full_name: "",
