@@ -49,17 +49,18 @@ Future<IDData> getIdDetails() async {
 
 void getCRDetails(String name) async {
   String url =
-      "https://b3d4-2a02-2f09-3919-9d00-acee-a03d-411b-8a20.eu.ngrok.io/api/search?full-name=${name}&api-key=T2Y433wrg3ad";
+      "http://127.0.0.1:5000/api/search?full-name=${name}&api-key=T2Y433wrg3ad";
   print("Sending request to $url");
 
   final response = await http.get(Uri.parse(url));
+  print(response.body);
 
-  if (response.statusCode == 200) {
-    final list = jsonDecode(response.body);
-    final res = CRData.fromJson(list[0]);
-    GlobalStatic.crData = res;
-    print(res.toString());
-  } else {
-    print('Failed to load data');
-  }
+  // if (response.statusCode == 200) {
+  //   final list = jsonDecode(response.body);
+  //   final res = CRData.fromJson(list[0]);
+  //   GlobalStatic.crData = res;
+  //   print(res.toString());
+  // } else {
+  //   print('Failed to load data');
+  // }
 }

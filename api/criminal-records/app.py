@@ -4,8 +4,10 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 import difflib
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.secret_key = 'secret-key'
 
 def connect_db():
