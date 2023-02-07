@@ -1,5 +1,5 @@
 
-# 🔥 Welcome to MorpheusID's *identity finder*!
+# 🔥 Welcome to MorpheusID's *addon bundle*!
 ## User Identity Verification using web pressence scoring
 MorpheusID is a plugin that helps developers reduce the number of fake identities on their platforms by using ID card verification and real time gesture checks through a simple video. Check it out at [https://morpheus-identity.com/](https://morpheus-identity.com/).
 
@@ -18,22 +18,22 @@ The aim of this project is to build ontop of the existing framework to develop n
 
 This project is made up of two main components:
 
-- `web-interface`: a simple React web app that leverages the MorpheusID plugin to capture user data
-- `api`: a set of modules used for detecting user activity on the internet and assigning them a reliability score, which denotes the probability of that user being real
+- `frontend`: a simple Flutter desktop/web app that leverages the MorpheusID plugin to capture user data;
+- `api`: a set of modules used for detecting user activity on the internet and assigning them a reliability score, which denotes the probability of that user being real based on online avaialble criminal records.
 
 ## ⚙️ Getting Started
 ### Web Interface
 Clone this repository and navigate to the web-interface directory:
 
-    cd Romanian-Card-Verification-Optimization/web-interface
+    cd Romanian-Card-Verification-Optimization/frontend
 
-Install the dependencies:
+Install the dependencies. For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
 
-    npm install
+    flutter run
 
-Start the development server:
-
-    npm start
+Choose appropriate environment based on local running device.
 
 Open your browser to http://localhost:3000 to see the web app in action!
 
@@ -41,17 +41,17 @@ Open your browser to http://localhost:3000 to see the web app in action!
 
 Clone this repository and navigate to the api directory:
 
-    cd MorpheusID/api
+    cd MorpheusID/api/criminal-records
 
 Install the dependencies:
 
     pip install -r requirements.txt
 
-Run the FastAPI development server:
+Run the Flask development server:
 
-    uvicorn main:app --reload
+    flask run
 
-The API will be available at http://localhost:8000. You can use a tool like Postman to send requests to the API and see the results.
+The API will be available at http://localhost:5000. You can use a tool like Postman to send requests to the API and see the results.
 
 ## 💡 Still a WIP
 
